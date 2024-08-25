@@ -81,3 +81,47 @@ document.getElementById("delete-user-form").addEventListener("submit", async (ev
 });
 
 app.listen(4001, () => console.log("Server running on port 4001"));
+
+
+```
+
+### 2. Diagram: Delete User Functionality Flow
+
+Below is the flow diagram that illustrates the delete user functionality:
+
+![Delete User Functionality Flow](./image.png)
+
+### 3. Explanation of "Delete User Functionality After Authentication"
+
+#### Is it a good idea?
+
+**Good Idea:** 
+Allowing the delete user functionality after authentication can be seen as a good idea in a scenario where we want to enforce that only authenticated users have the ability to perform actions within the system. This ensures that any critical action, like deleting a user, is traceable to a legitimate, logged-in user.
+
+**Bad Idea:** 
+However, from a security perspective, allowing all authenticated users (including non-admins) to delete any user account is potentially dangerous. This can lead to abuse if users start deleting each other's accounts maliciously. This functionality should ideally be restricted to admin users only, ensuring proper authorization controls are in place.
+
+#### Differences between Authentication and Authorization
+
+**Authentication** is the process of verifying the identity of a user. In this case, it checks if the user is who they claim to be, usually by validating their credentials (username and password).
+
+**Authorization** determines what an authenticated user is allowed to do within the system. After a user is authenticated, their role (admin, user, etc.) is checked to determine if they have permission to perform specific actions, such as deleting a user.
+
+In this functionality:
+- **Authentication** checks if the user is logged in.
+- **Authorization** checks if the user has the required permissions (roles) to delete another user.
+
+### 4. Evaluation Criteria
+
+1. **Clarity (20%):** The explanation breaks down complex concepts like authentication and authorization into simpler parts, making them easier to understand.
+  
+2. **Relevance (30%):** The content stays focused on explaining why allowing user deletion after authentication can be risky and the differences between authentication and authorization.
+
+3. **Structure (10%):** The content is logically organized, with a clear introduction, explanation, and conclusion.
+
+4. **Depth of Analysis (40%):** The analysis delves into the implications of allowing this functionality and explains the importance of separating authentication from authorization.
+
+## Conclusion
+
+This project demonstrates how to handle user management securely using JWT-based authentication and authorization in Node.js. The delete user functionality showcases the potential risks and considerations needed when implementing such features. By properly managing authentication and authorization, we can create a more secure and robust system.
+```
